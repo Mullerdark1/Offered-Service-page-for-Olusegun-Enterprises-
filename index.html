@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olusegun Enterprises</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f9f9fb;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4b2bbd, #6a4df5);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: white;
+      color: #4b2bbd;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 20px;
+      cursor: pointer;
+      border: none;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .form-box {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      background: #f1f1f7;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    input[type="checkbox"] {
+      width: auto;
+    }
+
+    .contact {
+      text-align: center;
+      background: #4b2bbd;
+      color: white;
+      border-radius: 20px;
+      padding: 40px 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <img src="logo.png" alt="Logo">
+  <h1>Olusegun Enterprises</h1>
+  <p>Quality Service, Unparalleled Results</p>
+</header>
+
+<section>
+  <div class="form-box">
+    <h2>Request a Service</h2>
+
+    <input type="text" id="name" placeholder="Enter your name" required>
+
+    <div class="services">
+      <label><input type="checkbox" value="CAC Registration"> CAC Registration</label>
+      <label><input type="checkbox" value="TIN Registration"> TIN Registration</label>
+      <label><input type="checkbox" value="SMEDAN Registration"> SMEDAN Registration</label>
+      <label><input type="checkbox" value="NIN Services"> NIN Services</label>
+      <label><input type="checkbox" value="International Passport"> International Passport</label>
+      <label><input type="checkbox" value="Educational Consult"> Educational Consult</label>
+      <label><input type="checkbox" value="Real Estate"> Real Estate</label>
+      <label><input type="checkbox" value="Graphics Design"> Graphics Design</label>
+      <label><input type="checkbox" value="Trademarking"> Trademarking</label>
+      <label><input type="checkbox" value="General Printing"> General Printing</label>
+    </div>
+
+    <button class="btn" onclick="sendToWhatsApp()">Send via WhatsApp</button>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>Contact</h2>
+  <p>Email: olakitan126@gmail.com</p>
+  <p>WhatsApp: +2349035519990</p>
+</section>
+
+<footer>
+  © 2026 Olusegun Enterprises
+</footer>
+
+<script>
+  function sendToWhatsApp() {
+    const name = document.getElementById("name").value;
+    const services = document.querySelectorAll('input[type="checkbox"]:checked');
+
+    if (!name) {
+      alert("Please enter your name");
+      return;
+    }
+
+    if (services.length === 0) {
+      alert("Please select at least one service");
+      return;
+    }
+
+    let selectedServices = [];
+    services.forEach(service => {
+      selectedServices.push(service.value);
+    });
+
+    const message = `Hello, my name is ${name}. I am interested in: ${selectedServices.join(", ")}`;
+    const url = `https://wa.me/2349035519990?text=${encodeURIComponent(message)}`;
+
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
